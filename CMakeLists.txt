@@ -1,6 +1,6 @@
-cmake_minimum_required(VERSION 3.28)
+cmake_minimum_required(VERSION 3.10...3.28)
 
-project(emt-linearmath LANGUAGES C CXX)
+project(emt-math LANGUAGES C CXX)
 
 add_library(emt-linearmath INTERFACE)
 add_library(emt::linearmath ALIAS emt-linearmath)
@@ -27,6 +27,8 @@ if(_BUILD_EXAMPLE)
 
     # target_link_libraries(sample PUBLIC glm)
     include(ExternalProject)
+
+    set(install_dir ${CMAKE_SOURCE_DIR}/external)
     set(lib_glm glm)
     ExternalProject_Add(
         ${lib_glm}
@@ -35,21 +37,19 @@ if(_BUILD_EXAMPLE)
         GIT_TAG origin/master
         GIT_SHALLOW ON
         UPDATE_DISCONNECTED ON
-        CMAKE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_CURRENT_BINARY_DIR}/dep/${lib_glm}/install
+        CMAKE_ARGS  -DCMAKE_INSTALL_PREFIX:PATH=${install_dir}
+                    #-CCMAKE_INSTALL_PACKAGEDIR:PATH=${install_dir}/cmake
                     -DBUILD_SHARED_LIBS:BOOL=OFF
                     -DBUILD_STATIC_LIBS:BOOL=OFF
                     -DGLM_TEST_ENABLE:BOOL=OFF
     )
 
-    set(GLM_INSTALL_DIR ${CMAKE_CURRENT_BINARY_DIR}/dep/${lib_glm}/install)
-
-    
-
     add_executable(sample sample/example.cpp)
 
     add_dependencies(sample ${lib_glm})
-    
+
     target_link_libraries(sample PUBLIC emt::linearmath)
 
-    target_include_directories(sample PUBLIC ${GLM_INSTALL_DIR}/include)
+    target_include_directories(sample PUBLIC ${install_dir}/include)
+
 endif()

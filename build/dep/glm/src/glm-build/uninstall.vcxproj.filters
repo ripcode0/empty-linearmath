@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\@github\@ripcode0\empty-linearmath\build\dep\glm\src\glm-build\CMakeFiles\82534cf2f5cf7fc4450fcf1892a3cd38\uninstall.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\@github\@ripcode0\empty-linearmath\build\dep\glm\src\glm\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\@github\@ripcode0\empty-linearmath\build\dep\glm\src\glm-build\CMakeFiles\uninstall" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{5BF83ED2-3795-3036-B931-9A980E427B9B}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
